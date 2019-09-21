@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.Rproj.user
+
+# R stuff
+.Rhistory
+
+# large data files
+data/raw/stack-exchange/stackoverflow.com-Tags.7z
+data/raw/stack-exchange/Tags.xml
