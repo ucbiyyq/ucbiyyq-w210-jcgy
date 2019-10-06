@@ -1,0 +1,16 @@
+,,Column chart,Line chart,Pie chart,Bar chart,Area chart,Scatter chart,Bubble chart,Stock chart,Surface chart,Donut chart,Radar chart,Map chart,Funnel chart,Sunburst chart,Waterfall chart,Histogram and Pareto charts,Box and whisker chart,Candlestick,Organizational,Tree map,Geo,Gauges,Crosstab,Heat map,Symbol map,Gantt chart,Bullet graph,Packed bubbles,Key influencers chart,Ribbon chart,Grid chart,Regression fits plot,Time series plot,Polar plot,Contour plot,Surface plot,Animation Plot,Sankey diagram,Violin plot,Network graph,3D plots,Dendrogram,Cluster
+Excel,https://support.office.com/en-us/article/available-chart-types-in-office-a6187218-807e-4103-9e0a-27cdb19afb90,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,,,,,,,,,,,,,,,,,,,,,,,,,,
+Google Sheets,https://support.google.com/docs/answer/190718?hl=en,x,x,x,x,x,x,,,,,x,,,,x,x,,x,x,x,x,x,,,,,,,,,,,,,,,,,,,,,
+Tableau,https://interworks.com/blog/ccapitula/2014/08/04/tableau-essentials-chart-types-introduction/,,x,x,x,x,x,,,,,,,,,,x,x,,,x,,,x,x,x,x,x,x,,,,,,,,,,,,,,,
+PowerBI,https://docs.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a,x,x,x,x,x,x,x,,,x,,x,x,,x,,,,,x,,x,,,,,,,x,x,,,,,,,,,,,,,
+Qlik,https://help.qlik.com/en-US/qlikview/April2019/Subsystems/Client/Content/QV_QlikView/Chart_types.htm,,x,x,x,,x,,,,,x,,x,,,,,,,,,x,,x,,,,,,,x,,,,,,,,,,,,
+SAS,https://www.afb.org/aw/19/7/15075,,,x,x,,,x,,,,,,,,,x,x,,,,,,,x,,,,,,,,,,,,,,,,,,,
+SPSS,https://www.ibm.com/support/knowledgecenter/en/SSLVMB_23.0.0/spss/base/chart_creation_charttypes.html,,x,x,x,x,x,,,,,,,,,,x,x,,,,,,,,,,,,,,,,,,,,,,,,,,
+Stata,https://www.stata.com/support/faqs/graphics/gph/stata-graphs/,,x,,x,x,x,,,,,,,,,,,,,,,,,,,,,,,,,,x,x,,,,,,,,,,
+Matlab,https://www.mathworks.com/help/matlab/creating_plots/types-of-matlab-plots.html,,,x,x,x,x,,,,,,,,,,x,,,,,x,,,x,,,,,,,,,,x,x,x,x,,,,,,
+plotly,https://plot.ly/r/,,x,x,x,x,x,x,,,,x,x,x,x,x,x,x,x,,,x,x,,x,,x,,,,,,,x,x,x,,x,x,x,x,x,,
+matplotlib,https://matplotlib.org/gallery.html,,x,x,x,,x,x,,,,,,,,,x,x,,,,,,,,,,,,,,,,,x,x,,,,x,,,,
+ggplot,http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html,,,,x,x,x,x,,,,,x,,,,x,x,,,x,x,,,x,,,,,,,,,x,,,,,,x,,,x,x
+Seaborn,https://python-graph-gallery.com/all-charts/,,x,x,x,x,x,x,,x,x,x,x,,,,x,x,,,x,x,,,x,,,,,,,,,,,x,x,x,x,x,x,x,x,
+D3,https://www.d3-graph-gallery.com/,,x,x,x,x,x,x,,,x,x,x,,,,x,x,,,x,x,,,x,,,,,,,,,,,,,x,x,x,x,,x,
+Other,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

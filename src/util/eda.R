@@ -300,5 +300,9 @@ t3 %>% ggsave(
 
 # Votes? -------------------------------------------------
 
-p_stackoverflow_tags <- here::here("data", "raw", "stack-exchange", "stackoverflow.com-Tags.xml")
+p_stackoverflow_votes <- here::here("data", "raw", "stack-exchange", "stackoverflow.com-Votes.xml")
 
+tidy_stackoverflow_votes <- function(p_stackoverflow_votes) {
+    t1 <- read_xml(p_stackoverflow_votes) 
+        
+}

@@ -102,4 +102,5 @@ data/raw/stack-exchange/stackoverflow.com-Tags.7z
 data/raw/stack-exchange/stackoverflow.com-Tags.xml
 data/raw/stack-exchange/stackoverflow.com-Users.7z
 data/raw/stack-exchange/stackoverflow.com-Votes.7z
+data/raw/stack-exchange/stackoverflow.com-Votes.xml
 .httr-oauth
