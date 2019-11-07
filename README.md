@@ -1,6 +1,6 @@
 # Vizziest - Making **Vis**ualization Ea**siest** for Everyone
 
-Pairing visualization tasks with proper languages, libraries and tools
+**Pairing visualization tasks with proper languages, libraries and tools**
 
 MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 
@@ -36,6 +36,8 @@ Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visu
 
 ## Overall Architecture
 
+It is a simple and straightforward 3-tier architecture. The top layer is the UX frontend with text input UI taking from user, Recommender with user interaction, and result output UI returning to user. The middle layer is the ML/AI machine with tokenizer/parser to process text input from user and feed the tokens to predictor. The model builder takes the data files post data/feature engineering from bottom layer, interacts with predictor within ML/AI engine and recommender from UI/backend interaction. The bottom layer is data files (badges, post, tag, users) collected from Stack Overflow and processed through the data pipeline.
+
 ## Data Pipeline
 
 Starting with Stack Overflow [data](https://docs.google.com/spreadsheets/d/1xn4ECk20CwKSk25AcO76Y9frnklSlEfxmWK58LW31bA/edit?usp=sharing), which is large corpus with rick Q&A feature possibilities. The initial audience focus is people with some development skills. Additional data sources to be considered are Stack Exchange Data Science community, Github with developer focused, and Reddit with power user focused.
@@ -53,6 +55,7 @@ conda activate w210
 git status
 git pull --all
 cd /mnt/disks/disk-1-w210-data/data/
+jupyter notebook
 ```
 
 ## Data/Feature Engineering
