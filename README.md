@@ -40,6 +40,21 @@ Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visu
 
 Starting with Stack Overflow [data](https://docs.google.com/spreadsheets/d/1xn4ECk20CwKSk25AcO76Y9frnklSlEfxmWK58LW31bA/edit?usp=sharing), which is large corpus with rick Q&A feature possibilities. The initial audience focus is people with some development skills. Additional data sources to be considered are Stack Exchange Data Science community, Github with developer focused, and Reddit with power user focused.
 
+Our development and deployment environment is [Google Cloud Platform](https://console.cloud.google.com). GCP commands via [Cloud SDK](https://cloud.google.com/sdk/) for individual instance access are:
+
+```
+gcloud projects list
+gcloud config set project w210-jcgy-254100
+gcloud config list
+gcloud compute regions list
+gcloud config set compute/zone us-east1-b
+gcloud compute ssh --ssh-flag="-L 8896:127.0.0.1:8896" --ssh-flag="-L 6006:127.0.0.1:6006" [yangyq|yqian|jbraun|ansjory|yqlin]@instance-1
+conda activate w210
+git status
+git pull --all
+cd /mnt/disks/disk-1-w210-data/data/
+```
+
 ## Data/Feature Engineering
 
 ## Mockup, UI and Backend
