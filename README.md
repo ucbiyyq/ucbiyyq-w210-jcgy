@@ -64,7 +64,22 @@ There are two sources to get our data. One is directly download from Stack Overf
 
 ## Mockup, UI and Backend
 
-UI mockup tool [Balsamiq](https://balsamiq.com/) is used to design, storyboard, and user-test our frontend UI. URL domain name [vizziest.info](http://vizziest.info) was acquired for 1-year period. 
+UI mockup tool [Balsamiq](https://balsamiq.com/) is used to design, storyboard, and user-test our frontend UI.
+
+URL domain name [vizziest.info](http://vizziest.info) was acquired from domain.com for 1-year period. Following configurations are required on the GCP VM instance based on this [tutorial](https://stories.mlh.io/launch-your-first-website-with-domain-com-and-google-cloud-platform-b0d72c448b6f)
+- Check "Allow HTTP Traffic" under Firewall rule when creating the VM instance
+- Redirect port 80 traffic using iptables firewall rule
+```
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+```
+- Connect our domain to Google Cloud DNS
+  - Create zone under Network Services with Zone type as "Public", Zone name as "Vizziest", and DNS name as "vizziest.info"
+  - Add record set with Resource Record Type as "A", IPv4 Address as "External IP" of VM instance
+  - Under domain.com, change Nameserver to the following:
+    ```
+    ns-cloud-d1.googledomains.com
+    ns-cloud-d2.googledomains.com
+    ```
 
 ## Models
 
