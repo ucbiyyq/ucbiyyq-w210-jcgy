@@ -95,7 +95,7 @@ We are also looking at the potential application of BERT model with [similarity 
 
 ## Model Evaluations
 
-One major challenge that we face for all our models is the fact the we do not havea labeled data as "ground truth". Thus, we must rely on subjective evaluations to determine the effectiveness of our models. The [survey](ttps://forms.gle/BAvATVBemGCwXCmB6) incorporated models of TF-IDF, Unigram, Bigram and Word2vec is for respondents to choose the most similar questions so as to evaluate recommendation systems.
+One major challenge that we face for all our models is the fact the we do not havea labeled data as "ground truth". Thus, we must rely on subjective evaluations to determine the effectiveness of our models. The [survey](https://forms.gle/BAvATVBemGCwXCmB6) incorporated models of TF-IDF, Unigram, Bigram and Word2vec is for respondents to choose the most similar questions so as to evaluate recommendation systems.
 
 For this project, we limited our knowledge base to visualization-related question and answer posts in Stack Overflow. To evaluate our model, we will ask potential users to enter sample questions into Vizziest and into Stack Overflow's native search bar. The users will be asked to rank the userfulness of the top answers provided by Vizziest compared to the top answers provided by Stack Overflow.
 
