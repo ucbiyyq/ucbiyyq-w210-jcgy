@@ -85,13 +85,25 @@ Our web server is spawned from same GCP VM instance in data pipeline for easy us
 
 ## Models
 
-Latent Dirichlet Allocation ([LDA](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)), a topic modeling technique in NLP, is attempted during the initial EDA and expected to fuzzy cluster membership recommendation. When we apply this technique on our viz post question dataset, we expect to identify top 10 to 50 "topics" based on LDA and try to extrapolate relationship between "topics" and chart types. However, we fail to associate each "topic" to a unique chart type selection.
+Latent Dirichlet Allocation ([LDA](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)), a topic modeling technique in NLP, is attempted during the initial EDA and expected to obtain fuzzy cluster membership recommendation. When we apply this technique on our viz post question dataset, we expect to identify top 10 to 50 "topics" based on LDA and try to extrapolate relationship between "topics" and chart types. However, we fail to associate each "topic" to a unique chart type selection.
+
+Then we look into Term Frequency - Inverse Document Frequency (TF-IDF), a vector space model for cosine similarity, for question recommendation, with variation of Unigram, Bigram, and Word2vec. We would use the total number of documents in the corpus divided by the number of documents where the term appears. Then we use cosine similarity to calculate the distance between different documents and output the top questions with the highest similarity scores.
+
+Then we will use Logistic Regression for answer recommendation based on features like comment counts, author reputation, and view counts. The numerator is total number of documents in the corpus and denominator is number of documents where the term appears. The set of documents in a collection then is viewed as a set of vectors in a vector space to find similarity between two documents.
+
+We are also looking at the potential application of BERT model with [similarity measure](https://medium.com/the-artificial-impostor/news-topic-similarity-measure-using-pretrained-bert-model-1dbfe6a66f1d), [text classification](https://medium.com/swlh/a-simple-guide-on-using-bert-for-text-classification-bbf041ac8d04), and SQuAD approach.
 
 ## Model Evaluations
 
+One major challenge that we face for all our models is the fact the we do not havea labeled data as "ground truth". Thus, we must rely on subjective evaluations to determine the effectiveness of our models. The [survey](ttps://forms.gle/BAvATVBemGCwXCmB6) incorporated models of TF-IDF, Unigram, Bigram and Word2vec is for respondents to choose the most similar questions so as to evaluate recommendation systems.
+
+For this project, we limited our knowledge base to visualization-related question and answer posts in Stack Overflow. To evaluate our model, we will ask potential users to enter sample questions into Vizziest and into Stack Overflow's native search bar. The users will be asked to rank the userfulness of the top answers provided by Vizziest compared to the top answers provided by Stack Overflow.
+
 ## Testings
 
-## Reference
+We asked 105 testers to identify the question most similar to questions in a test suite. To choose from, the testers were given questions recommended by our TF-IDF bigram, TF-IDF unigram, and word2vec models, as well as the top answer returned by Stack Overflow's search bar. The TF-IDF unigram model results were rated most highly by the testers, and well above the results from Stack Overflow's search bar. We will perform similar tests once we have results from a BERT model.
+
+## Additional Resources
 
 * Week 14 Presentation 3
 * [Week 10 Presentation 2](https://docs.google.com/presentation/d/1M5llKflCqmPuugS7w5dXMTWEy4Q2loXvacZyqIPS7W4/edit#slide=id.g64e6dbcd63_0_0)
