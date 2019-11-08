@@ -62,11 +62,11 @@ jupyter notebook
 
 There are two sources to get our data. One is directly download from Stack Overflow website. Those files are XML files and Python scripts were written to get the keys, create dictionaries, and then parse them to CSV files. Given the size of the dataset, we also wrote scripts to split and combine the files to usable format. We also obtained the data from Google BigQuery. Then we [filter](https://docs.google.com/document/d/1FlyOfoKquoQ9H7dW6dW9FXpEt-RV4gE_Vzbdk8LYIKE/edit) data and use parsed tags data to set to only visualization related topics, narrowing them down to around [700k](https://drive.google.com/drive/u/0/folders/10JDNEzLMDvlUYBtTPThrj2Qqz0L7I9ei) questions and then [450k](https://drive.google.com/drive/u/0/folders/1BG3flmbfoqNO_B2wRBvhDamrDLgD1Hgk) questions. We cleaned up and reorganized the question and answer bodies to make them human readable. As the tags in the original questions data are not separated by spaces, we have to use one-hot encoding to get usable tag features. We further extract more features for answers dataset to include author reputation, badges, codes and instruction steps.
 
-## Mockup, UI and Backend
+## Mockup & UI, Backend Connection
 
 UI mockup tool [Balsamiq](https://balsamiq.com/) is used to design, storyboard, and user-test our frontend UI.
 
-URL domain name [vizziest.info](http://vizziest.info) was acquired from domain.com for 1-year period. Following configurations are required on the GCP VM instance based on this [tutorial](https://stories.mlh.io/launch-your-first-website-with-domain-com-and-google-cloud-platform-b0d72c448b6f)
+URL domain name [vizziest.info](http://vizziest.info) was acquired from domain.com for 1-year period. Following configurations are required on the GCP VM instance based on this [tutorial](https://stories.mlh.io/launch-your-first-website-with-domain-com-and-google-cloud-platform-b0d72c448b6f):
 - Check "Allow HTTP Traffic" under Firewall rule when creating the VM instance
 - Redirect port 80 traffic using iptables firewall rule
 ```
@@ -81,7 +81,11 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
     ns-cloud-d2.googledomains.com
     ```
 
+Our web server is spawned from same GCP VM instance in data pipeline for easy user (frontend) and prediction (backend) data exchange. Our simple frontend web UI is a free-form style question input and answer output. The data connection from and to backend is through Flask and Jinja interacting with Python code. 
+
 ## Models
+
+Latent Dirichlet Allocation ([LDA](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)), a topic modeling technique in NLP, is attempted during the initial EDA and expected to fuzzy cluster membership recommendation. When we apply this technique on our viz post question dataset, we expect to identify top 10 to 50 "topics" based on LDA and try to extrapolate relationship between "topics" and chart types. However, we fail to associate each "topic" to a unique chart type selection.
 
 ## Model Evaluations
 
