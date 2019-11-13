@@ -4,6 +4,7 @@ import pandas as pd
 import gensim
 import nltk
 #nltk.download('punkt')
+import gcsfs
 
 class tfModel():
     '''
@@ -45,13 +46,19 @@ class tfModel():
         questions_above_threshold_similarity = questions_copy[questions_copy['similarity'] >= threshold]
         questions_above_threshold_similarity = questions_above_threshold_similarity.sort_values('similarity',ascending=False)
 
-        answers = pd.read_csv('w210_answer_bodies.tsv', sep='\t')
+        fs = gcsfs.GCSFileSystem(project='w210-jcgy-254100')
+        with fs.open('w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies/PostAnswersFiltered_V4_cleaned_answer_bodies.tsv', 'rb') as f:
+        	answers = pd.read_csv(f, sep='\t')
 
         combined = pd.merge(questions_above_threshold_similarity, answers, how='left', left_on = 'accepted_answer_id', right_on = 'id')
 
         return (combined['title_x'].head(num_results), combined['cleaned_body'].head(num_results))
 
-m = tfModel('new_qs.csv')
+#m = tfModel('new_qs.csv')
+
+fs = gcsfs.GCSFileSystem(project='w210-jcgy-254100')
+with fs.open('w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies/new_qs.csv', 'rb') as f:
+	m = tfModel(f)
 
 # Initialise the Flask app
 app = flask.Flask(__name__, template_folder='templates')
