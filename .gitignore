@@ -105,3 +105,4 @@ data/raw/stack-exchange/stackoverflow.com-Votes.7z
 data/raw/stack-exchange/stackoverflow.com-Votes.xml
 .httr-oauth
 models/bert_en_uncased_L-12_H-768_A-12
+models/bert
