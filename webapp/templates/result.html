@@ -6,7 +6,7 @@
   font-size: 10px;
   position: fixed;
   text-align:center;
-  bottom: 125px;
+  top: 50px;
   background: rgba(0, 0, 0, 0.1);
   color: #f1f1f1;
   width: 100%;
@@ -32,6 +32,10 @@ table td {
   word-wrap:break-word;
 }
 
+img {
+  width: 100%;
+  display: block;
+}
 </style>
 
 <head>
@@ -42,7 +46,7 @@ table td {
   <source src="/static/Up.mp4" type="video/mp4" class="fillWidth"></source>
 </video>
 
-<div class="content">
+<div class="content" style="overflow:scroll; height:750px;">
 <b>{{ original_input }}</b>
 
 <table border="1" align="center">
@@ -51,9 +55,19 @@ table td {
           <td><b>{{ sim_doc }}</b></td>
        {% endfor %}
   </tr>
-  <tr>
+  <tr align="left">
        {% for sim_doc in ans %}
           <td>{{ sim_doc }}</td>
+       {% endfor %}
+  </tr>
+  <tr>
+       {% for sim_doc in img %}
+          <td>{{ sim_doc|replace("[", "")|replace("]","")|safe }}</td>
+       {% endfor %}
+  </tr>
+  <tr align="left">
+       {% for sim_doc in code %}
+          <td>{{ sim_doc|replace("[", "")|replace("]","")|safe }}</td>
        {% endfor %}
   </tr>
 </table>
