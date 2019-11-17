@@ -52,7 +52,7 @@ class tfModel():
 
         combined = pd.merge(questions_above_threshold_similarity, answers, how='left', left_on = 'accepted_answer_id', right_on = 'id')
 
-        return (combined['title_x'].head(num_results), combined['cleaned_body'].head(num_results))
+        return (combined['title_x'].head(num_results), combined['cleaned_body'].head(num_results), combined['images_list'].head(num_results), combined['code_snippets'].head(num_results))
 
 #m = tfModel('new_qs.csv')
 
@@ -80,7 +80,7 @@ def main():
         # Get the model's prediction
         #prediction = model.predict(input_variables)[0]
 
-        similar_que, similar_ans = m.get_similar_documents(input_variables, num_results=10)
+        similar_que, similar_ans, similar_img, similar_code = m.get_similar_documents(input_variables, num_results=3)
 
         # Render the form again, but add in the prediction and remind user
         # of the values they input before
@@ -88,6 +88,8 @@ def main():
                                      original_input=userquery,
                                      que=similar_que,
                                      ans=similar_ans,
+				     img=similar_img,
+				     code=similar_code,
                                      )
 
 if __name__ == '__main__':
