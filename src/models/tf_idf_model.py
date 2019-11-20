@@ -16,7 +16,7 @@ class tfModel():
     def __init__(self, question_file):
         qs = pd.read_csv(question_file)
         qs = qs.fillna(value={'new_tags': ''})
-        raw_documents = qs['title'] + qs['new_tags']
+        raw_documents = qs['title'] + ' ' + qs['new_tags']
         # sample to smaller number of documents
         raw_documents = raw_documents
         qs = qs
