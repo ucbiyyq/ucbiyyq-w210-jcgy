@@ -34,7 +34,7 @@ SEED = 20191114
 # defines cache folder for BERT model
 PYTORCH_PRETRAINED_BERT_CACHE = "../models/bert/"
 
-SAMPLE_SIZE = 10
+SAMPLE_SIZE = None
 BATCH_SIZE = 128
 MAX_SEQ_LENGTH = 200
 
