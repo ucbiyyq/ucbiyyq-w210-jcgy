@@ -105,7 +105,7 @@ We asked 105 testers to identify the question most similar to questions in a tes
 
 ## Additional Resources
 
-* Week 14 Presentation 3
+* [Week 14 Presentation 3](https://docs.google.com/presentation/d/15oKzgl3USPItpqjKc6EadOLzsUdqpHfu3xeozCo-XxA/edit#slide=id.g7a70253d8d_0_18)
 * [Week 10 Presentation 2](https://docs.google.com/presentation/d/1M5llKflCqmPuugS7w5dXMTWEy4Q2loXvacZyqIPS7W4/edit#slide=id.g64e6dbcd63_0_0)
 * [Week 7 Communication and Storytelling Workshop](https://docs.google.com/presentation/d/1Dc3RShvwhcIsi3HX5cOaITeRkrjx0cbvw5ENN8EJ59k/edit?usp=sharing)
 * [Week 5 Presentation 1](https://docs.google.com/presentation/d/1gIKujbJHFY7V9X2ZZIskhfv7tjDtLovV-u2LAL6eI1E/edit#slide=id.p)
