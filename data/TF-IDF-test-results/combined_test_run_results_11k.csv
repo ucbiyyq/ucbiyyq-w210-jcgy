@@ -1,0 +1,73 @@
+Answer,Corpus_Size,Input_query,Related_Question,Similarity_Score,Test_Run
+ ,5628.0,Is there a way to visualize the distribution of my data?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How do I show data on a map?, , ,TF-IDF on questions plus question tags
+ You can change the labels on the x-axis using That should give you connected circles with the hour strings on the x-axis.,5628.0,How can I illustrate changes in my data over time?,plotting changes over time in python/matplotlib,0.5677807331085205,TF-IDF on questions plus question tags
+ ,5628.0,"Is there a way to show a ""heatmap"" of my data?", , ,TF-IDF on questions plus question tags
+ ,5628.0,How can I plot a comparison of two data sets?, , ,TF-IDF on questions plus question tags
+ Sure.  Just start from an empty plot and then use legend as you would if there were a plot.,5628.0,How can I create a chart without coding?,How can I create a legend without a plot in R?,0.742440402507782,TF-IDF on questions plus question tags
+ ,5628.0,When should I use a bar chart versus a pie chart?, , ,TF-IDF on questions plus question tags
+ ,5628.0,What is the easiest way to create a diagram of a network?, , ,TF-IDF on questions plus question tags
+" From Google it would appear that this approach once worked, however your result now seems the default. From the Highcharts documentation , it appears that you need to load the module specifically. In your case I had success with this approach (changes in cell 2): See this gist or this nbviewer to see it in action.",5628.0,I need help creating a visualization of my data,Need help creating a highchart histogram in a Jupyter-Notebook,0.50994873046875,TF-IDF on questions plus question tags
+" From Google it would appear that this approach once worked, however your result now seems the default. From the Highcharts documentation , it appears that you need to load the module specifically. In your case I had success with this approach (changes in cell 2): See this gist or this nbviewer to see it in action.",5628.0,I need help creating a graph of my data,Need help creating a highchart histogram in a Jupyter-Notebook,0.5280853509902954,TF-IDF on questions plus question tags
+ ,5628.0,When should I use a scatter plot?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How do I plot 2 datasets in d3?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How can I animate a bar chart in Python?, , ,TF-IDF on questions plus question tags
+ ,5628.0,"I know how to create a line chart with matplotlib, how do I do it in R?", , ,TF-IDF on questions plus question tags
+ ,5628.0,What is the easiest way to create a heat map of the US?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How can I animate a choropleth in Tableau?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How can I animate a choropleth in PowerBI?, , ,TF-IDF on questions plus question tags
+ ,5628.0,How can I animate a choropleth in d3?, , ,TF-IDF on questions plus question tags
+ ,13938.0,Is there a way to visualize the distribution of my data?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How do I show data on a map?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I illustrate changes in my data over time?, , ,TF-IDF on answers plus question tags
+ ,13938.0,"Is there a way to show a ""heatmap"" of my data?", , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I plot a comparison of two data sets?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I create a chart without coding?, , ,TF-IDF on answers plus question tags
+ ,13938.0,When should I use a bar chart versus a pie chart?, , ,TF-IDF on answers plus question tags
+ ,13938.0,What is the easiest way to create a diagram of a network?, , ,TF-IDF on answers plus question tags
+ ,13938.0,I need help creating a visualization of my data, , ,TF-IDF on answers plus question tags
+ ,13938.0,I need help creating a graph of my data, , ,TF-IDF on answers plus question tags
+ ,13938.0,When should I use a scatter plot?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How do I plot 2 datasets in d3?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I animate a bar chart in Python?, , ,TF-IDF on answers plus question tags
+ ,13938.0,"I know how to create a line chart with matplotlib, how do I do it in R?", , ,TF-IDF on answers plus question tags
+ ,13938.0,What is the easiest way to create a heat map of the US?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I animate a choropleth in Tableau?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I animate a choropleth in PowerBI?, , ,TF-IDF on answers plus question tags
+ ,13938.0,How can I animate a choropleth in d3?, , ,TF-IDF on answers plus question tags
+ ,13938.0,Is there a way to visualize the distribution of my data?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How do I show data on a map?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I illustrate changes in my data over time?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,"Is there a way to show a ""heatmap"" of my data?", , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I plot a comparison of two data sets?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I create a chart without coding?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,When should I use a bar chart versus a pie chart?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,What is the easiest way to create a diagram of a network?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,I need help creating a visualization of my data, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,I need help creating a graph of my data, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,When should I use a scatter plot?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How do I plot 2 datasets in d3?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I animate a bar chart in Python?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,"I know how to create a line chart with matplotlib, how do I do it in R?", , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,What is the easiest way to create a heat map of the US?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I animate a choropleth in Tableau?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I animate a choropleth in PowerBI?, , ,TF-IDF on answers plus question titles + question tags
+ ,13938.0,How can I animate a choropleth in d3?, , ,TF-IDF on answers plus question titles + question tags
+ ,1697.0,Is there a way to visualize the distribution of my data?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How do I show data on a map?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How can I illustrate changes in my data over time?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,"Is there a way to show a ""heatmap"" of my data?", , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How can I plot a comparison of two data sets?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How can I create a chart without coding?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,When should I use a bar chart versus a pie chart?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,What is the easiest way to create a diagram of a network?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,I need help creating a visualization of my data, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,I need help creating a graph of my data, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,When should I use a scatter plot?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How do I plot 2 datasets in d3?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How can I animate a bar chart in Python?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,"I know how to create a line chart with matplotlib, how do I do it in R?", , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,What is the easiest way to create a heat map of the US?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ ,1697.0,How can I animate a choropleth in Tableau?, , ,"TF-IDF on answers plus question tags, only answers with images"
+ http://ggplot2.tidyverse.org/reference/geom_density.html,1697.0,How can I animate a choropleth in PowerBI?,Density curve for grouped observations,0.5129865407943726,"TF-IDF on answers plus question tags, only answers with images"
+ http://ggplot2.tidyverse.org/reference/geom_density.html,1697.0,How can I animate a choropleth in d3?,Density curve for grouped observations,0.5481870174407959,"TF-IDF on answers plus question tags, only answers with images"
