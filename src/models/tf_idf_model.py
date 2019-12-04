@@ -43,7 +43,7 @@ class tfModel():
         questions_above_threshold_similarity = questions_copy[questions_copy['similarity'] >= threshold]
         questions_above_threshold_similarity = questions_above_threshold_similarity.sort_values('similarity',ascending=False)
 
-        answers = pd.read_csv('/mnt/disks/w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies/PostAnswersFiltered_V4_cleaned_answer_bodies.tsv', sep='\t')
+        answers = pd.read_csv('/mnt/disks/w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies/PostAnswersFiltered_V4_cleaned_answer_bodies.tsv', sep='\t', keep_default_na=False, encoding='utf-8')
 
         combined = pd.merge(questions_above_threshold_similarity, answers, how='left', left_on = 'accepted_answer_id', right_on = 'id')
 
