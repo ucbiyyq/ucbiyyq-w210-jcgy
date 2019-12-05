@@ -16,6 +16,17 @@ from pytorch_pretrained_bert.tokenization import BertTokenizer
 from fastprogress import master_bar, progress_bar
 from sklearn.model_selection import StratifiedShuffleSplit
 
+logger = logging.getLogger("bert")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# defines seed for replication
+SEED = 20191114
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+if device == torch.device("cuda"):
+    torch.cuda.manual_seed_all(SEED)
+
 class Suggester_BertTopicSimiliarty():
     def __init__(
         self
@@ -55,18 +66,14 @@ class Suggester_BertTopicSimiliarty():
         
         # instantiates the helper class
         self.ceshiner = Ceshiner()
-    
+
     def _construct_corpus(self, questions, answers):
         '''
         helper function that constructs corpus
         with question id, title, accepted answer id, answer body
         note, implicitly only questions with accepted answers will end up in corpus
         '''
-        t1 = questions
-        t1 = t1[t1["accepted_answer_id"]  != ""]
-        t1 = t1[t1.accepted_answer_id.notnull()]
-        t1["accepted_answer_id"] = t1["accepted_answer_id"].astype(float).astype(int)
-        t1 = t1[[
+        t1 = questions[[
             "id"
             , "title"
             , "tags"
@@ -75,6 +82,7 @@ class Suggester_BertTopicSimiliarty():
             "id" : "q_id"
             , "title" : "q_title"
         })
+
         t2 = answers[[
             "id"
             , "body"
@@ -88,29 +96,32 @@ class Suggester_BertTopicSimiliarty():
             , "code_snippets" : "a_code_snippets"
             , "cleaned_body" : "a_cleaned_body"
         })
+
         t3 = t1.merge(
             t2
             , left_on = "accepted_answer_id"
             , right_on = "a_id"
             , how = "inner"
         ).drop(columns = "a_id")
+        
         # ... removes any cleaned answers that are null
-        t4 = t3
-        t4 = t4[t4.a_cleaned_body.notnull()]
-        t4 = t4[t4["a_cleaned_body"] != ""]
+        t4 = t3[t3.a_cleaned_body.notnull()]
+
         if self.sample_n is not None:
             t5 = t4.sample(self.sample_n, random_state = self.random_state)
         else:
             t5 = t4
+
         return(t5)
-    
+
     def prepare(self):
         '''
         loads data & makes corpus
         '''
-        self.questions = pd.read_csv(self.question_file, delimiter = ",", encoding = "utf-8")
-        self.answers = pd.read_csv(self.answer_file, delimiter = "\t", , keep_default_na=False, encoding = "utf-8")
+        self.questions = pd.read_csv(self.question_file, delimiter = "\t", encoding = "utf-8")
+        self.answers = pd.read_csv(self.answer_file, delimiter = "\t", encoding = "utf-8")
         self.corpus = self._construct_corpus(self.questions, self.answers)
+        print(self.corpus.shape)
     
     def get_similar_documents(self, query, num_results = 5, threshold = 0.10):
         sentence_pairs = self.ceshiner.convert_sentence_pair(
@@ -118,14 +129,11 @@ class Suggester_BertTopicSimiliarty():
             , self.corpus.a_cleaned_body.tolist()
             , max_seq_length = self.max_seq_length
             , tokenizer = self.tokenizer
-            , logger = self.logger
         )
         similarity_scores = self.ceshiner.eval_pairs(
             sentence_pairs = sentence_pairs
             , batch_size = self.batch_size
             , model = self.model
-            , device = self.device
-            , logger = self.logger
         )
         self.corpus_res = self.corpus.copy()
         self.corpus_res["similarity"] = similarity_scores
@@ -133,11 +141,11 @@ class Suggester_BertTopicSimiliarty():
         self.best_matches = self.best_matches[self.best_matches['similarity'] >= threshold]
         self.best_matches = self.best_matches.sort_values('similarity', ascending = False)
         self.best_matches = self.best_matches[:num_results]
+#         res = np.argsort(self.similarity_scores)[::-1][:num_results]
+#         self.best_matches = self.corpus.iloc[res]
         similar_que = self.best_matches["q_title"]
         similar_ans = self.best_matches["a_cleaned_body"]
-        similar_img = self.best_matches["a_images_list"]
-        similar_code = self.best_matches["a_code_snippets"]
-        return(similar_que, similar_ans, similar_img, similar_code)
+        return(similar_que, similar_ans)
 
 
 class InputFeatures(object):
@@ -169,7 +177,7 @@ class Ceshiner():
             else:
                 tokens_b.pop()
                 
-    def convert_sentence_pair(self, titles, descs, max_seq_length, tokenizer, logger):
+    def convert_sentence_pair(self, titles, descs, max_seq_length, tokenizer):
         features = []
         for (ex_index, (title, desc)) in enumerate(zip(titles, descs)):
             tokens_a = tokenizer.tokenize(title)
@@ -221,6 +229,7 @@ class Ceshiner():
             assert len(input_ids) == max_seq_length
             assert len(input_mask) == max_seq_length
             assert len(segment_ids) == max_seq_length
+
             if ex_index < 5:
                 logger.info("*** Example ***")
                 logger.info("tokens: %s" % " ".join(
@@ -239,7 +248,7 @@ class Ceshiner():
             ))
         return features
 
-    def eval_pairs(self, sentence_pairs, batch_size, model, device, logger):
+    def eval_pairs(self, sentence_pairs, batch_size, model):
         logger.info("***** Running evaluation *****")
         all_input_ids = torch.tensor([f.input_ids for f in sentence_pairs], dtype=torch.long)
         all_input_mask = torch.tensor([f.input_mask for f in sentence_pairs], dtype=torch.long)

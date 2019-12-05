@@ -13,11 +13,8 @@ class tfModel():
         query = 'Programming languages supporting functional programming'
         similar_documents = m.get_similar_documents(query, num_results=10)
     '''
-    def __init__(self, question_file, answer_file):
-        self.question_file = question_file
-        self.answer_file = answer_file
-        
-        qs = pd.read_csv(self.question_file, delimiter = ",", encoding = "utf-8")
+    def __init__(self, question_file):
+        qs = pd.read_csv(question_file)
         qs = qs.fillna(value={'new_tags': ''})
         raw_documents = qs['title'] + ' ' + qs['new_tags']
         # sample to smaller number of documents
@@ -46,9 +43,8 @@ class tfModel():
         questions_above_threshold_similarity = questions_copy[questions_copy['similarity'] >= threshold]
         questions_above_threshold_similarity = questions_above_threshold_similarity.sort_values('similarity',ascending=False)
 
-        answers = pd.read_csv(self.answer_file, sep='\t', keep_default_na=False, encoding='utf-8')
-        answers = answers[answers["cleaned_body"] != ""]
+        answers = pd.read_csv('/mnt/disks/w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies/PostAnswersFiltered_V4_cleaned_answer_bodies.tsv', sep='\t', keep_default_na=False, encoding='utf-8')
 
-        combined = pd.merge(questions_above_threshold_similarity, answers, how='inner', left_on = 'accepted_answer_id', right_on = 'id')
+        combined = pd.merge(questions_above_threshold_similarity, answers, how='left', left_on = 'accepted_answer_id', right_on = 'id')
 
         return (combined['title_x'].head(num_results), combined['cleaned_body'].head(num_results), combined['images_list'].head(num_results), combined['code_snippets'].head(num_results))
