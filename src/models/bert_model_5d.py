@@ -95,7 +95,9 @@ class Suggester_BertTopicSimiliarty():
             , how = "inner"
         ).drop(columns = "a_id")
         # ... removes any cleaned answers that are null
-        t4 = t3[t3.a_cleaned_body.notnull()]
+        t4 = t3
+        t4 = t4[t4.a_cleaned_body.notnull()]
+        t4 = t4[t4["a_cleaned_body"] != ""]
         if self.sample_n is not None:
             t5 = t4.sample(self.sample_n, random_state = self.random_state)
         else:
@@ -107,7 +109,7 @@ class Suggester_BertTopicSimiliarty():
         loads data & makes corpus
         '''
         self.questions = pd.read_csv(self.question_file, delimiter = ",", encoding = "utf-8")
-        self.answers = pd.read_csv(self.answer_file, delimiter = "\t", encoding = "utf-8")
+        self.answers = pd.read_csv(self.answer_file, delimiter = "\t", , keep_default_na=False, encoding = "utf-8")
         self.corpus = self._construct_corpus(self.questions, self.answers)
     
     def get_similar_documents(self, query, num_results = 5, threshold = 0.10):
