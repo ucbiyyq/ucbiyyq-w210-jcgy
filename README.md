@@ -157,7 +157,17 @@ Similar [survey](https://forms.gle/kDHmgmFhReHg8ydr8) was conducted for BERT mod
 
 The key takeaways for the evaluations are survey respondents tend to prefer results from TF-IDF against BERT based on the quality of the answers. We limited the VM instance with 1 GPU and 11k question-answer pairs, the response time tends to scale linearly with number of samples. So for search application overall, simple TF-IDF model offers better performance at lower cost than BERT.
 
+![User Preference](docs/img/portfolio/5.png)
+
 ## Websites
+
+[Vizziest website](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/) were built based on [Jekyll](https://jekyllrb.com/) support. It is supported in Github environment under docs directory. Following commands need to be run in the local environment. Go to http://127.0.0.1:4000/ upon serving.
+```
+sudo gem install jekyll bundler
+bundle init
+gem "jekyll" in Gemfile
+jekyll serve
+```
 
 ## Additional Resources
 
