@@ -33,8 +33,8 @@ SEED = 20191203
 
 # cached data
 p_base_dir = "/mnt/disks/w210-jcgy-bucket/w210-data-output-new-q-and-a-files-with-separate-cleaned-answer-bodies"
-p_questions = os.path.join(p_base_dir, "SODQuesWImg.csv")
-p_answers = os.path.join(p_base_dir, "SODAnsWImg.tsv")
+p_questions = os.path.join(p_base_dir, "new_qs_22k.csv")
+p_answers = os.path.join(p_base_dir, "PostAnswersFiltered_V4_cleaned_answer_bodies.tsv")
 
 
 # prepares BERT ----------------------------------
