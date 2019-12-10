@@ -60,7 +60,7 @@ Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visu
 
 ## Overall Architecture
 
-It is a clean and simple 3-tier architecture, The user interacts with input UI to type in the query in plain text format, and it passes to the parser through the backend interface. Based on the user option, either the TF-IDF or BERT model is being built based on the data files with feature engineering done. Our data files were preprocessed from the Stack Overflow archives. With the tokens and the model ready, the recommendations for query will be predicted and passed back to the frontend for output UI to be presented to the user.
+It is a clean and simple 3-tier architecture. The user interacts with input UI to type in the query in plaintext format, and it passes to the parser through the backend interface. Based on the user option selected, either the TF-IDF or BERT model is being built based on the data files with feature engineering done. Our data files were preprocessed from the Stack Overflow archives. With the tokens and the model ready, the predicted recommendations for user's query will be passed back to the frontend for output UI to present to the user.
 
 ![Architecture](docs/img/portfolio/1.png)
 
@@ -70,7 +70,7 @@ Starting with Stack Overflow [data](https://docs.google.com/spreadsheets/d/1xn4E
 
 ![Data Pipeline](docs/img/portfolio/2.png)
 
-Our development and deployment environment is [Google Cloud Platform](https://console.cloud.google.com). GCP commands via [Cloud SDK](https://cloud.google.com/sdk/) for individual instance access are:
+Our development and deployment environment is [Google Cloud Platform](https://console.cloud.google.com). GCP commands via [Cloud SDK](https://cloud.google.com/sdk/) for individual [GCP VM instance](https://console.cloud.google.com/compute/instances?project=w210-jcgy-254100&authuser=1&instancessize=50) access, and mount point for persistent data stored in the [GCP Bucket](https://console.cloud.google.com/storage/browser/w210-jcgy-bucket?authuser=1&project=w210-jcgy-254100) are:
 
 ```
 gcloud projects list
@@ -82,16 +82,19 @@ gcloud compute ssh --ssh-flag="-L 8896:127.0.0.1:8896" --ssh-flag="-L 6006:127.0
 conda activate w210
 git status
 git pull --all
-cd /mnt/disks/disk-1-w210-data/data/
+cd /mnt/disks/w210-jcgy-bucket/
 jupyter notebook
 ```
+
 ## Data Feature Engineering
 
-There are two sources to get our data. One is directly download from Stack Overflow website. Those files are XML files and Python scripts were written to get the keys, create dictionaries, and then parse them to CSV files. Given the size of the dataset, we also wrote scripts to split and combine the files to usable format. We also obtained the data from Google BigQuery. Then we [filter](https://docs.google.com/document/d/1FlyOfoKquoQ9H7dW6dW9FXpEt-RV4gE_Vzbdk8LYIKE/edit) data and use parsed tags data to set to only visualization related topics, narrowing them down to around [700k](https://drive.google.com/drive/u/0/folders/10JDNEzLMDvlUYBtTPThrj2Qqz0L7I9ei) questions and then [450k](https://drive.google.com/drive/u/0/folders/1BG3flmbfoqNO_B2wRBvhDamrDLgD1Hgk) questions. We cleaned up and reorganized the question and answer bodies to make them human readable. As the tags in the original questions data are not separated by spaces, we have to use one-hot encoding to get usable tag features. We further extract more features for answers dataset to include author reputation, badges, codes and instruction steps.
+There are two sources to get our data. One is directly download from Stack Overflow website. Those files are XML files and Python scripts were written to get the keys, create dictionaries, and then parse them to CSV files. Given the size of the dataset, we also wrote scripts to split and combine the files to usable format. We also obtained the data from Google BigQuery. Then we [filter](https://docs.google.com/document/d/1FlyOfoKquoQ9H7dW6dW9FXpEt-RV4gE_Vzbdk8LYIKE/edit) data and use parsed tags data to set to only visualization related topics, narrowing them down to around [700k](https://drive.google.com/drive/u/0/folders/10JDNEzLMDvlUYBtTPThrj2Qqz0L7I9ei) questions and then [450k](https://drive.google.com/drive/u/0/folders/1BG3flmbfoqNO_B2wRBvhDamrDLgD1Hgk) questions. We cleaned up and reorganized the question and answer bodies to make them human readable. As the tags in the original questions data are not separated by spaces, we have to use one-hot encoding to get usable tag features. We further extract more features for answers dataset to include author reputation, badges, codes and instruction steps. The latest processed data is stored at GCP Bucket.
 
 ## Mockup UI Backend Connection
 
 UI mockup tool [Balsamiq](https://balsamiq.com/) is used to design, storyboard, and user-test our frontend UI.
+
+![UI Mockup](docs/img/portfolio/3.png)
 
 URL domain name [vizziest.info](http://vizziest.info) was acquired from domain.com for 1-year period. Following configurations are required on the GCP VM instance based on this [tutorial](https://stories.mlh.io/launch-your-first-website-with-domain-com-and-google-cloud-platform-b0d72c448b6f):
 - Check "Allow HTTP Traffic" under Firewall rule when creating the VM instance
@@ -101,14 +104,28 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
 ```
 - Connect our domain to Google Cloud DNS
   - Create zone under Network Services with Zone type as "Public", Zone name as "Vizziest", and DNS name as "vizziest.info"
-  - Add record set with Resource Record Type as "A", IPv4 Address as "External IP" of VM instance
+  - Add record set with Resource Record Type as "A", IPv4 Address as "External IP" of VM instance "35.237.81.204"
   - Under domain.com, change Nameserver to the following:
     ```
-    ns-cloud-d1.googledomains.com
-    ns-cloud-d2.googledomains.com
+    ns-cloud-c1.googledomains.com
+    ns-cloud-c2.googledomains.com
     ```
 
 Our web server is spawned from same GCP VM instance in data pipeline for easy user (frontend) and prediction (backend) data exchange. Our simple frontend web UI is a free-form style question input and answer output. The data connection from and to backend is through Flask and Jinja interacting with Python code. 
+```
+sudo apt-get update
+sudo apt-get install python3-pip
+pip3 install pandas
+pip3 install gensim
+pip3 install nltk
+pip3 install flask
+export FLASK_ENV=development
+python3 app.py
+nohup python3 app.py > output.log &
+ps ax | grep app.py
+```
+
+To browse the Vizziest application being served with the python3 command under webapp directory on local machine, go to http://127.0.0.1:5000/; on GCP VM instance, go to http://vizziest.info
 
 ## Models
 
