@@ -17,10 +17,11 @@ MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 - [Problem Statement](#problem-statement)
 - [Mission Statement](#mission-statement)
 - [Impact](#impact)
-- [MVP/Key Features](#mvp-/-key-features)
+- [MVP Key Features](#mvp-key-features)
 - [Overall Architecture](#overall-architecture)
 - [Data Pipeline](#data-pipeline)
-- [Data/Feature Engineering](#data-/-feature-engineering)
+- [Data Feature Engineering](#data-feature-engineering)
+- [Mockup UI Backend Connection](#mockup-ui-backend-connection)
 - [Models](#models)
 - [Model Evaluations](#models-evaluation)
 - [Testings](#testings)
@@ -43,7 +44,7 @@ Our hypothesis is that given a problem domain such as visualization, we can crea
 
 Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visualizations) of data scientists and business analysts with [results](https://drive.google.com/file/d/1oUGaKxJ1l6I_gCochS7xaTQvEle4b9OJ/view?usp=sharing) indicated that, on average, they create 8.2 data visualizations per month. Assuming they spend 15 minutes per visualization searching for code examples and guidance for each visualization, that means they spend 24.6 hours per year finding answers. The goal of Vizziest is to dramatically reduce this time.
 
-## MVP/Key Features
+## MVP Key Features
 
 **User** *enters* general description of desired viz task, optional filters
 
@@ -60,6 +61,8 @@ Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visu
 ## Overall Architecture
 
 It is a simple and straightforward 3-tier architecture. The top layer is the UX frontend with text input UI taking from user, Recommender with user interaction, and result output UI returning to user. The middle layer is the ML/AI machine with tokenizer/parser to process text input from user and feed the tokens to predictor. The model builder takes the data files post data/feature engineering from bottom layer, interacts with predictor within ML/AI engine and recommender from UI/backend interaction. The bottom layer is data files (badges, post, tag, users) collected from Stack Overflow and processed through the data pipeline.
+
+![Architecture](docs/img/portfolio/1.png)
 
 ## Data Pipeline
 
@@ -80,12 +83,13 @@ git pull --all
 cd /mnt/disks/disk-1-w210-data/data/
 jupyter notebook
 ```
+[Data Pipeline](docs/img/portfolio/2.png)
 
-## Data/Feature Engineering
+## Data Feature Engineering
 
 There are two sources to get our data. One is directly download from Stack Overflow website. Those files are XML files and Python scripts were written to get the keys, create dictionaries, and then parse them to CSV files. Given the size of the dataset, we also wrote scripts to split and combine the files to usable format. We also obtained the data from Google BigQuery. Then we [filter](https://docs.google.com/document/d/1FlyOfoKquoQ9H7dW6dW9FXpEt-RV4gE_Vzbdk8LYIKE/edit) data and use parsed tags data to set to only visualization related topics, narrowing them down to around [700k](https://drive.google.com/drive/u/0/folders/10JDNEzLMDvlUYBtTPThrj2Qqz0L7I9ei) questions and then [450k](https://drive.google.com/drive/u/0/folders/1BG3flmbfoqNO_B2wRBvhDamrDLgD1Hgk) questions. We cleaned up and reorganized the question and answer bodies to make them human readable. As the tags in the original questions data are not separated by spaces, we have to use one-hot encoding to get usable tag features. We further extract more features for answers dataset to include author reputation, badges, codes and instruction steps.
 
-## Mockup & UI, Backend Connection
+## Mockup UI Backend Connection
 
 UI mockup tool [Balsamiq](https://balsamiq.com/) is used to design, storyboard, and user-test our frontend UI.
 
