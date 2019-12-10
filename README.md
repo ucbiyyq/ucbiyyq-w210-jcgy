@@ -4,10 +4,13 @@
 
 MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 
-Team Members: [Jeffrey Braun](mailto:jbraun@ischool.berkeley.edu), [Chi Iong Ansjory](mailto:ansjory@ischool.berkeley.edu), [Yuqing (Grace) Lin](mailto:ylin@ischool.berkeley.edu), [Yang Yang Qian](yangyang.qian@ischool.berkeley.edu)
-Project Website: [Vizziest - Making Visualization Easiest for Everyone](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/)
-Capstone Project Gallery: [Vizziest: Making Visualization Easiest for Everyone](https://www.ischool.berkeley.edu/projects/2019/vizziest-making-visualization-easiest-everyone)
-Class Presentation Slide Decks: [Additional Resources]
+**Team Members:** [Jeffrey Braun](mailto:jbraun@ischool.berkeley.edu), [Chi Iong Ansjory](mailto:ansjory@ischool.berkeley.edu), [Yuqing (Grace) Lin](mailto:ylin@ischool.berkeley.edu), [Yang Yang Qian](yangyang.qian@ischool.berkeley.edu)
+
+**Project Website:** [Vizziest - Making Visualization Easiest for Everyone](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/)
+
+**Capstone Project Gallery:** [Vizziest: Making Visualization Easiest for Everyone](https://www.ischool.berkeley.edu/projects/2019/vizziest-making-visualization-easiest-everyone)
+
+**Class Presentation Slide Decks:** [Additional Resources](#additional-resources)
 
 ## Table of Content
 
@@ -17,9 +20,9 @@ Class Presentation Slide Decks: [Additional Resources]
 - [MVP/Key Features](#mvp-key-features)
 - [Overall Architecture](#overall-architecture)
 - [Data Pipeline](#data-pipeline)
-- [Data/Feature Engineering)(#data-feature-engineering)
+- [Data/Feature Engineering](#data-feature-engineering)
 - [Models](#models)
-- [Model Evaluations])(#models-evaluation)
+- [Model Evaluations](#models-evaluation)
 - [Testings](#testings)
 - [Websites](#websites)
 - [Additional Resources](#additional-resources)
