@@ -83,7 +83,7 @@ git pull --all
 cd /mnt/disks/disk-1-w210-data/data/
 jupyter notebook
 ```
-[Data Pipeline](docs/img/portfolio/2.png)
+![Data Pipeline](docs/img/portfolio/2.png)
 
 ## Data Feature Engineering
 
