@@ -5,6 +5,24 @@
 MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 
 Team Members: [Jeffrey Braun](mailto:jbraun@ischool.berkeley.edu), [Chi Iong Ansjory](mailto:ansjory@ischool.berkeley.edu), [Yuqing (Grace) Lin](mailto:ylin@ischool.berkeley.edu), [Yang Yang Qian](yangyang.qian@ischool.berkeley.edu)
+Project Website: [Vizziest - Making Visualization Easiest for Everyone](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/)
+Capstone Project Gallery: [Vizziest: Making Visualization Easiest for Everyone](https://www.ischool.berkeley.edu/projects/2019/vizziest-making-visualization-easiest-everyone)
+Class Presentation Slide Decks: [Additional Resources]
+
+## Table of Content
+
+- [Problem Statement](#problem-statement)
+- [Mission Statement](#mission-statement)
+- [Impact](#impact)
+- [MVP/Key Features](#mvp-key-features)
+- [Overall Architecture](#overall-architecture)
+- [Data Pipeline](#data-pipeline)
+- [Data/Feature Engineering)(#data-feature-engineering)
+- [Models](#models)
+- [Model Evaluations])(#models-evaluation)
+- [Testings](#testings)
+- [Websites](#websites)
+- [Additional Resources](#additional-resources)
 
 ## Problem Statement
 
@@ -15,6 +33,8 @@ People wanting to create data visualizations are faced with reading through and 
 Vizziest takes the time, frustration, and guesswork out of finding actionable guidance for creating the data visualization that best meets the user’s business requirements.
 
 Our hypothesis is that given a problem domain such as visualization, we can create models on top of knowledge repositories to generate more helpful, targeted advice than a user would get from a generalized search engine. Once developed, this approach can generalize to other problem domains, for example, predicting data science models most appropriate for a user's business need.
+
+![User Pain Point](docs/img/portfolio/0.png)
 
 ## Impact
 
@@ -102,6 +122,8 @@ For this project, we limited our knowledge base to visualization-related questio
 ## Testings
 
 We asked 105 testers to identify the question most similar to questions in a test suite. To choose from, the testers were given questions recommended by our TF-IDF bigram, TF-IDF unigram, and word2vec models, as well as the top answer returned by Stack Overflow's search bar. The TF-IDF unigram model results were rated most highly by the testers, and well above the results from Stack Overflow's search bar. We will perform similar tests once we have results from a BERT model.
+
+## Websites
 
 ## Additional Resources
 
