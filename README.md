@@ -24,7 +24,6 @@ MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 - [Mockup UI Backend Connection](#mockup-ui-backend-connection)
 - [Models](#models)
 - [Model Evaluations](#models-evaluation)
-- [Testings](#testings)
 - [Websites](#websites)
 - [Additional Resources](#additional-resources)
 
@@ -131,21 +130,32 @@ To browse the Vizziest application being served with the python3 command under w
 
 Latent Dirichlet Allocation ([LDA](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)), a topic modeling technique in NLP, is attempted during the initial EDA and expected to obtain fuzzy cluster membership recommendation. When we apply this technique on our viz post question dataset, we expect to identify top 10 to 50 "topics" based on LDA and try to extrapolate relationship between "topics" and chart types. However, we fail to associate each "topic" to a unique chart type selection.
 
-Then we look into Term Frequency - Inverse Document Frequency (TF-IDF), a vector space model for cosine similarity, for question recommendation, with variation of Unigram, Bigram, and Word2vec. We would use the total number of documents in the corpus divided by the number of documents where the term appears. Then we use cosine similarity to calculate the distance between different documents and output the top questions with the highest similarity scores.
+Then we look into Term Frequency - Inverse Document Frequency (TF-IDF), a vector space model for cosine similarity, for question recommendation, with variation of Unigram, Bigram, and Word2vec, Sentence2vec. We would use the total number of documents in the corpus divided by the number of documents where the term appears. Then we use cosine similarity to calculate the distance between different documents and output the top questions with the highest similarity scores. TF-IDF is fast by using text frequency to determine importance with no linguistic contexts. Word2vec and Sentence2vec are pretrained model based on Google News by neural networks trained to reconstruct linguistic contexts of words, but limited to Google News data.
 
 Then we will use Logistic Regression for answer recommendation based on features like comment counts, author reputation, and view counts. The numerator is total number of documents in the corpus and denominator is number of documents where the term appears. The set of documents in a collection then is viewed as a set of vectors in a vector space to find similarity between two documents.
 
-We are also looking at the potential application of BERT model with [similarity measure](https://medium.com/the-artificial-impostor/news-topic-similarity-measure-using-pretrained-bert-model-1dbfe6a66f1d), [text classification](https://medium.com/swlh/a-simple-guide-on-using-bert-for-text-classification-bbf041ac8d04), and SQuAD approach.
+We are also looking at the potential application of Bidirectional Encoder Representation from Transformers (BERT) model with next sentence prediction (NSP), [similarity measure](https://medium.com/the-artificial-impostor/news-topic-similarity-measure-using-pretrained-bert-model-1dbfe6a66f1d), [text classification](https://medium.com/swlh/a-simple-guide-on-using-bert-for-text-classification-bbf041ac8d04), and SQuAD approach. In general, BERT aims for better semantic understanding of search terms with transfer learning. We used a pretrained BERT model from Hugging Face in Pytorch. We need two sentences or "spans" for NSP: user's input becomes one span and Stack Overflow accepted answer bodies is the second span. The assumption is that the question should be semantically closer to the accepted answer body than other bodies.
+
+![BERT NSP](docs/img/portfolio/4.png)
 
 ## Model Evaluations
 
-One major challenge that we face for all our models is the fact the we do not havea labeled data as "ground truth". Thus, we must rely on subjective evaluations to determine the effectiveness of our models. The [survey](https://forms.gle/BAvATVBemGCwXCmB6) incorporated models of TF-IDF, Unigram, Bigram and Word2vec is for respondents to choose the most similar questions so as to evaluate recommendation systems.
+For this project, we limited our knowledge base to visualization-related question and answer posts in Stack Overflow. To evaluate our model, we will ask potential users to enter sample questions into Vizziest and into Stack Overflow's native search bar. The users will be asked to rank the userfulness of the top answers provided by Vizziest compared to the top answers provided by Stack Overflow. One major challenge that we face for all our models is the fact the we do not have labeled data as "ground truth". Thus, we must rely on subjective evaluations to determine the effectiveness of our models.
 
-For this project, we limited our knowledge base to visualization-related question and answer posts in Stack Overflow. To evaluate our model, we will ask potential users to enter sample questions into Vizziest and into Stack Overflow's native search bar. The users will be asked to rank the userfulness of the top answers provided by Vizziest compared to the top answers provided by Stack Overflow.
+We acquired testers to identify the question most similar to questions in a test suite. To choose from, the testers were given questions recommended by our TF-IDF unigram, word2vec and sentence2vec models. The [survey](https://forms.gle/BAvATVBemGCwXCmB6) incorporated models of TF-IDF, Unigram, Bigram and Word2vec is for 105 respondents through Mechanical Turk to choose the most similar questions so as to evaluate recommendation systems.
 
-## Testings
+Here is a summary of the survey results with preference on TF-IDF Uni-gram:
+* 52% of respondents chose TF-IDF Uni-gram
+* 31% of respondents chose Stack Overflow search engine
+* 10% of respondents chose Word to Vector
+* 7% of respondents chose Sentence to Vector
 
-We asked 105 testers to identify the question most similar to questions in a test suite. To choose from, the testers were given questions recommended by our TF-IDF bigram, TF-IDF unigram, and word2vec models, as well as the top answer returned by Stack Overflow's search bar. The TF-IDF unigram model results were rated most highly by the testers, and well above the results from Stack Overflow's search bar. We will perform similar tests once we have results from a BERT model.
+Similar [survey](https://forms.gle/kDHmgmFhReHg8ydr8) was conducted for BERT model against other models as well on 100 respondents through Mechanical Turk. Here is the summary of survey results also with preference on TF-IDF Uni-gram:
+* 62% of respondents chose TF-IDF Uni-gram
+* 27% of respondents chose Stack Overflow search engine
+* 11% of respondents chose BERT
+
+The key takeaways for the evaluations are survey respondents tend to prefer results from TF-IDF against BERT based on the quality of the answers. We limited the VM instance with 1 GPU and 11k question-answer pairs, the response time tends to scale linearly with number of samples. So for search application overall, simple TF-IDF model offers better performance at lower cost than BERT.
 
 ## Websites
 
