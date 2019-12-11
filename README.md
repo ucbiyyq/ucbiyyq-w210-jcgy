@@ -10,7 +10,9 @@ MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 
 **Capstone Project Gallery:** [Vizziest: Making Visualization Easiest for Everyone](https://www.ischool.berkeley.edu/projects/2019/vizziest-making-visualization-easiest-everyone)
 
-**Class Presentation Slide Decks:** [Additional Resources](#additional-resources)
+**Final Presentation Slide Deck** [Vizziest](docs/img/portfolio/vizziest.pdf)
+
+**All Class Presentation Slide Decks:** [Additional Resources](#additional-resources)
 
 ## Table of Content
 
