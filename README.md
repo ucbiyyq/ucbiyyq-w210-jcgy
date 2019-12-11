@@ -23,7 +23,7 @@ MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 - [Data Feature Engineering](#data-feature-engineering)
 - [Mockup UI Backend Connection](#mockup-ui-backend-connection)
 - [Models](#models)
-- [Model Evaluations](#models-evaluations)
+- [Model Evaluations](#model-evaluations)
 - [Project Website](#project-website)
 - [Additional Resources](#additional-resources)
 
@@ -42,6 +42,8 @@ Our hypothesis is that given a problem domain such as visualization, we can crea
 ## Impact
 
 Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visualizations) of data scientists and business analysts with [result 1](https://drive.google.com/file/d/1oUGaKxJ1l6I_gCochS7xaTQvEle4b9OJ/view?usp=sharing) and [result 2](https://data.surveygizmo.com/r/677654_5df13dec9ca5b5.71244476) indicated that, on average, they create 8.2 data visualizations per month. Assuming they spend 15 minutes per visualization searching for code examples and guidance for each visualization, that means they spend 24.6 hours per year finding answers. The goal of Vizziest is to dramatically reduce this time.
+
+![Opportunity to Improve](docs/img/portfolio/0a.png)
 
 ## MVP Key Features
 
@@ -155,9 +157,11 @@ Similar [survey](https://forms.gle/kDHmgmFhReHg8ydr8) was conducted for BERT mod
 * 27% of respondents chose Stack Overflow search engine
 * 11% of respondents chose BERT
 
+![User Preference](docs/img/portfolio/5.png)
+
 The key takeaways for the evaluations are survey respondents tend to prefer results from TF-IDF against BERT based on the quality of the answers. We limited the VM instance with 1 GPU and 11k question-answer pairs, the response time tends to scale linearly with number of samples. So for search application overall, simple TF-IDF model offers better performance at lower cost than BERT.
 
-![User Preference](docs/img/portfolio/5.png)
+![Model Performance](docs/img/portfolio/6.png)
 
 ## Project Website
 
