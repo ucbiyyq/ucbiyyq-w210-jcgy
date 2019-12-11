@@ -2,9 +2,9 @@
 
 **Pairing visualization tasks with proper languages, libraries and tools**
 
-MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
+MIDS W210.6 Fall 2019 Capstone Project Repository - [ucbiyyq-w210-jcgy](https://github.com/ucbiyyq/ucbiyyq-w210-jcgy)
 
-**Team Members:** [Jeffrey Braun](mailto:jbraun@ischool.berkeley.edu), [Chi Iong Ansjory](mailto:ansjory@ischool.berkeley.edu), [Yuqing (Grace) Lin](mailto:ylin@ischool.berkeley.edu), [Yang Yang Qian](yangyang.qian@ischool.berkeley.edu)
+**JCGY Team Members:** [Jeffrey Braun](mailto:jbraun@ischool.berkeley.edu), [Chi Iong Ansjory](mailto:ansjory@ischool.berkeley.edu), [Yuqing (Grace) Lin](mailto:ylin@ischool.berkeley.edu), [Yang Yang Qian](yangyang.qian@ischool.berkeley.edu)
 
 **Project Website:** [Vizziest - Making Visualization Easiest for Everyone](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/)
 
