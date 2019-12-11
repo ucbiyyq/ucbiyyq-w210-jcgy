@@ -172,6 +172,7 @@ bundle init
 gem "jekyll" in Gemfile
 jekyll serve
 ```
+![Website](docs/img/portfolio/7.png)
 
 ## Additional Resources
 
@@ -183,4 +184,4 @@ jekyll serve
 * [Vizziest Task List Sheet](https://docs.google.com/spreadsheets/d/1sDwbgM8OFQyg-vm2y0Fxh65E7CKBu4WI5oaMcItEZuA/edit?usp=sharing)
 * [Initial Task List Sheet and Feedback List](https://docs.google.com/spreadsheets/d/19ff4Nb30oHjf4JloauIVDLaRFCyLj3CD4S25JKwEFF0/edit#gid=0)
 
-@ 2019 by Vizzest. Proudly created by JCGY team.
+@ 2019 by [Vizziest](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/). Proudly created by JCGY team.
