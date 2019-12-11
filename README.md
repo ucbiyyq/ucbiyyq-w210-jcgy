@@ -23,8 +23,8 @@ MIDS W210.6 Fall 2019 Capstone Project Repository - ucbiyyq-w210-jcgy
 - [Data Feature Engineering](#data-feature-engineering)
 - [Mockup UI Backend Connection](#mockup-ui-backend-connection)
 - [Models](#models)
-- [Model Evaluations](#models-evaluation)
-- [Websites](#websites)
+- [Model Evaluations](#models-evaluations)
+- [Project Website](#project-website)
 - [Additional Resources](#additional-resources)
 
 ## Problem Statement
@@ -41,7 +41,7 @@ Our hypothesis is that given a problem domain such as visualization, we can crea
 
 ## Impact
 
-Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visualizations) of data scientists and business analysts with [results](https://drive.google.com/file/d/1oUGaKxJ1l6I_gCochS7xaTQvEle4b9OJ/view?usp=sharing) indicated that, on average, they create 8.2 data visualizations per month. Assuming they spend 15 minutes per visualization searching for code examples and guidance for each visualization, that means they spend 24.6 hours per year finding answers. The goal of Vizziest is to dramatically reduce this time.
+Our earlier [survey](https://www.mysurveygizmo.com/s3/5231057/Creating-Data-Visualizations) of data scientists and business analysts with [result 1](https://drive.google.com/file/d/1oUGaKxJ1l6I_gCochS7xaTQvEle4b9OJ/view?usp=sharing) and [result 2](https://data.surveygizmo.com/r/677654_5df13dec9ca5b5.71244476) indicated that, on average, they create 8.2 data visualizations per month. Assuming they spend 15 minutes per visualization searching for code examples and guidance for each visualization, that means they spend 24.6 hours per year finding answers. The goal of Vizziest is to dramatically reduce this time.
 
 ## MVP Key Features
 
@@ -159,7 +159,7 @@ The key takeaways for the evaluations are survey respondents tend to prefer resu
 
 ![User Preference](docs/img/portfolio/5.png)
 
-## Websites
+## Project Website
 
 [Vizziest website](https://ucbiyyq.github.io/ucbiyyq-w210-jcgy/) were built based on [Jekyll](https://jekyllrb.com/) support. It is supported in Github environment under docs directory. Following commands need to be run in the local environment. Go to http://127.0.0.1:4000/ upon serving.
 ```
@@ -178,3 +178,5 @@ jekyll serve
 * [Week 4 Project Writeup](https://docs.google.com/document/d/1R3Gx72YorSwzzPwlFmFwitgEcGAbYN2VXmzLjm_4NVc/edit?usp=sharing) with [Revised Project Scope](https://drive.google.com/open?id=1rNXevUmSY0ZNaLx80u638e4V4dZk71a66spoaqABluU)
 * [Vizziest Task List Sheet](https://docs.google.com/spreadsheets/d/1sDwbgM8OFQyg-vm2y0Fxh65E7CKBu4WI5oaMcItEZuA/edit?usp=sharing)
 * [Initial Task List Sheet and Feedback List](https://docs.google.com/spreadsheets/d/19ff4Nb30oHjf4JloauIVDLaRFCyLj3CD4S25JKwEFF0/edit#gid=0)
+
+@ 2019 by Vizzest. Proudly created by JCGY team.
