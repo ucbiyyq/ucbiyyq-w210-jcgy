@@ -9,7 +9,7 @@ import sys
 sys.path.append("..")
 from src.models import tf_idf_model as tf_idf_model
 
-from src.models import bert_model as bert_model
+from src.models import bert_model_1 as bert_model
 import gcsfs
 import os
 import logging
