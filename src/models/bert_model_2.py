@@ -14,7 +14,7 @@ from torch.utils.data import TensorDataset, DataLoader, SequentialSampler
 from pytorch_pretrained_bert.modeling import BertForNextSentencePrediction
 from pytorch_pretrained_bert.tokenization import BertTokenizer
 from fastprogress import master_bar, progress_bar
-from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn import preprocessing
 
 class Suggester_BertTopicSimiliarty():
     def __init__(
@@ -69,11 +69,15 @@ class Suggester_BertTopicSimiliarty():
         t1 = t1[[
             "id"
             , "title"
+            , "body"
             , "tags"
             , "accepted_answer_id"
+            , "score"
         ]].rename(columns = {
             "id" : "q_id"
             , "title" : "q_title"
+            , "body" : "q_body"
+            , "score" : "q_score"
         })
         t2 = answers[[
             "id"
@@ -113,9 +117,13 @@ class Suggester_BertTopicSimiliarty():
         self.corpus = self._construct_corpus(self.questions, self.answers)
     
     def get_similar_documents(self, query, num_results = 5, threshold = 0.10):
+        
+        # similarity score
         sentence_pairs = self.ceshiner.convert_sentence_pair(
             [query] * self.corpus.shape[0]
             , self.corpus.a_cleaned_body.tolist()
+#             , self.corpus.q_title.tolist()
+#             , self.corpus.q_body.tolist()
             , max_seq_length = self.max_seq_length
             , tokenizer = self.tokenizer
             , logger = self.logger
@@ -127,11 +135,22 @@ class Suggester_BertTopicSimiliarty():
             , device = self.device
             , logger = self.logger
         )
-        self.corpus_res = self.corpus.copy()
-        self.corpus_res["similarity"] = similarity_scores
-        self.best_matches = self.corpus_res.copy()
-        self.best_matches = self.best_matches[self.best_matches['similarity'] >= threshold]
-        self.best_matches = self.best_matches.sort_values('similarity', ascending = False)
+        self.best_matches = self.corpus.copy()
+        self.best_matches["similarity"] = similarity_scores
+        
+        # upvotes score, but scaled
+        scaler = preprocessing.MinMaxScaler(feature_range=(0, 1))
+        q_score_scaled = scaler.fit_transform(self.best_matches[["q_score"]])
+        self.best_matches["q_score_scaled"] = q_score_scaled
+        
+        # calculates a ranking score
+        # TODO find better way to calculate score & scaling it
+        rnk = np.mean(self.best_matches[["similarity", "q_score_scaled"]], axis = 1)
+        self.best_matches["rank_score"] = rnk
+        
+        # finds best matches
+        self.best_matches = self.best_matches[self.best_matches["rank_score"] >= threshold]
+        self.best_matches = self.best_matches.sort_values("rank_score", ascending = False)
         self.best_matches = self.best_matches[:num_results]
         similar_que = self.best_matches["q_title"]
         similar_ans = self.best_matches["a_cleaned_body"]
